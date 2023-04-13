@@ -36,9 +36,9 @@ const Header = () => {
   };
 
   return (
-    <header className="py-8 px-6 md:py-10 md:px-[60px] bg-white ">
+    <header className="py-8 px-6 md:py-10 md:px-[60px] bg-white mb-8">
       <div className="mb-8 md:mb-0 flex justify-between items-center container mx-auto max-w-[1440px]">
-        <div className="flex items-center gap-x-[78px] w-full">
+        <div className="flex items-center gap-x-4 xl:gap-x-[78px] w-full">
           <Link
             href="/"
             className="text-primary-500 text-2xl md:text-[32px] font-bold uppercase"

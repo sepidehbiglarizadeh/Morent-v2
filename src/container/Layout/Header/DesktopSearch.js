@@ -3,7 +3,7 @@ import SearchIcon from "@/common/icons/SearchIcon";
 
 const DesktopSearch = () => {
   return (
-      <form className="hidden md:flex items-center justify-between gap-x-5 flex-1 border rounded-[70px] py-[10px] px-5 max-w-[492px]">
+      <form className="hidden md:flex items-center justify-between gap-x-5 flex-1 border rounded-[70px] py-[10px] px-5 max-w-[492px] mr-2">
         <SearchIcon />
         <input
           type="text"
