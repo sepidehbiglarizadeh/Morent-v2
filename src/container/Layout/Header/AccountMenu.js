@@ -8,7 +8,7 @@ const AccountMenu = ({ anchorEl, accountMenuHandler }) => {
     <div
       className={`${
         anchorEl ? "block" : "hidden"
-      } absolute right-0 top-14 bg-white w-36 text-secondary-400 p-4 shadow-md rounded menu`}
+      } absolute right-0 top-14 bg-white w-36 text-secondary-400 p-4 shadow-md rounded menu z-20`}
     >
       <div className="mb-4" onClick={accountMenuHandler}>
         <Link href="/signin" className="flex gap-x-2">

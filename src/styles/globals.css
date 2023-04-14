@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,19 +11,30 @@
 
 html,
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background-color: #F6F7F9;
-  color: #1A202C;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background-color: #f6f7f9;
+  color: #1a202c;
 }
 
-.menu::before{
+.menu::before {
   content: "";
   width: 0;
-	height: 0;
-	border-left: 6px solid transparent;
-	border-right: 6px solid transparent;
-	border-bottom: 10px solid #fff;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-bottom: 10px solid #fff;
   position: absolute;
   right: 20px;
   top: -10px;
 }
+
+.react-time-picker__button {
+  display: none;
+}
+
+.react-time-picker__clock {
+  display: none;
+}
+
+
+
