@@ -28,10 +28,8 @@ body {
   top: -10px;
 }
 
-.react-time-picker__button {
-  display: none;
-}
-
-.react-time-picker__clock {
-  display: none;
+.background{
+  background-image: url("./../../public/images/Ads.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
