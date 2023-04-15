@@ -46,7 +46,7 @@ const FilterForm = ({ title, bgColor, date, handleDateChange }) => {
                 Select your city
               </option>
               {options.map((item) => (
-                <option>{item.label}</option>
+                <option key={item.value}>{item.label}</option>
               ))}
             </select>
             <ChevronDownIcon className="w-3 h-3" />
@@ -76,8 +76,8 @@ const FilterForm = ({ title, bgColor, date, handleDateChange }) => {
               <option value="" disabled>
                 Select your time
               </option>
-              {times.map((time) => (
-                <option>{time.value}</option>
+              {times.map((time,index) => (
+                <option key={index}>{time.value}</option>
               ))}
             </select>
             <ChevronDownIcon className="w-3 h-3" />
