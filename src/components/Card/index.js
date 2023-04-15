@@ -5,9 +5,15 @@ import { HeartIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = ({ car }) => {
+const Card = ({ car, gridLayout, gridCols }) => {
   return (
-    <div className="bg-white p-4 rounded-[10px] col-span-6 sm:col-span-3 md:col-span-2 flex flex-col justify-between ">
+    <div
+      className={` bg-white p-6 rounded-lg flex flex-col justify-between md:min-h-[388px] ${
+        gridLayout ? `col-span-6 sm:col-span-3 md:col-span-2` : "min-w-[240px]"
+      } ${
+        gridCols ? "col-span-8 sm:col-span-4 xl:col-span-2" : "min-w-[240px]"
+      }`}
+    >
       {/* card Header */}
       <div className="flex justify-between items-center mb-1">
         <h2 className="font-semibold">{car.title}</h2>
@@ -20,8 +26,14 @@ const Card = ({ car }) => {
       </span>
 
       {/* card image and icons */}
-      <div className="flex justify-between md:flex-col md:gap-y-[52px] mb-8">
-        <figure className="px-9 md:px-0 flex items-end justify-center relative">
+      <div
+        className={`${
+          gridLayout
+            ? "flex items-center justify-between md:gap-y-[52px]"
+            : "flex flex-col"
+        }  md:flex-col md:justify-start md:items-start md:gap-x-0 mb-9 md:mb-0 gap-y-[52px]`}
+      >
+        <figure className="px-4 md:px-0 flex items-end justify-center relative w-full ">
           <Image
             src={car.coverImage}
             sizes="(max-width: 768px) 100vw, 50vw "
@@ -29,11 +41,18 @@ const Card = ({ car }) => {
             width={272}
             height={84}
             alt={car.title}
+            className="object-contain"
           />
           <div className="absolute bottom-0 left-0 right-0 h-7 bg-gradient-to-t from-white to-transparent"></div>
         </figure>
 
-        <div className="flex flex-col gap-y-4 md:flex-row md:items-center md:justify-between">
+        <div
+          className={`${
+            gridLayout
+              ? "flex flex-col gap-y-4"
+              : "flex justify-between items-center"
+          }  md:flex-row justify-between md:items-center md:gap-x-1 md:mb-9 md:w-full`}
+        >
           <div className="flex items-center gap-x-1">
             <GasStation />
             <span className="text-xs xl:text-sm font-medium text-secondary-300">

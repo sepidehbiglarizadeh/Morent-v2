@@ -28,7 +28,7 @@ const CarsPage = ({ carsData }) => {
       <div className="grid grid-cols-6 gap-8 mb-12 md:mb-16">
         {carsData.docs.length ? (
           carsData.docs.map((car) => {
-            return <Card key={car._id} car={car} />;
+            return <Card key={car._id} car={car} gridLayout={true}/>;
           })
         ) : (
           <p className="col-span-6 text-center font-bold">No Car Found !!</p>
