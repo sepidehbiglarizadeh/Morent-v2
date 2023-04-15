@@ -3,14 +3,12 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 const ImageGallery = ({ car }) => {
-  const [mainImg, setMainImg] = useState("");
+  const [mainImg, setMainImg] = useState(car.coverImage);
   const router = useRouter();
 
   useEffect(() => {
     setMainImg(car.coverImage);
   }, [router]);
-
-  console.log(mainImg);
 
   return (
     <div className="mb-8 md:mb-0 md:w-1/2">
@@ -47,6 +45,7 @@ const ImageGallery = ({ car }) => {
             alt={car.title}
             placeholder="blur"
             blurDataURL={car.coverImage}
+            sizes="(max-width: 768px) 100vw, 50vw"
           />
         </figure>
       </div>
@@ -54,24 +53,39 @@ const ImageGallery = ({ car }) => {
       {/* Thumbnails */}
       <div className="flex items-center justify-between gap-x-8 ">
         <div
-          className="bg-red-300 w-full h-[64px] sm:h-[108px] flex items-center justify-center background rounded-lg cursor-pointer"
+          className=" w-full h-[64px] sm:h-[108px] flex items-center justify-center background rounded-lg cursor-pointer"
           onClick={() => setMainImg(car.coverImage)}
         >
           <figure className="relative w-20 h-[26px] sm:w-[116px] sm:h-9">
-            <Image src={car.coverImage} alt="thumbnail1" fill />
+            <Image
+              src={car.coverImage}
+              alt="thumbnail1"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
           </figure>
         </div>
         <figure
           className="relative h-[64px] w-full sm:h-[108px] rounded-lg overflow-hidden cursor-pointer"
           onClick={() => setMainImg(car.image1)}
         >
-          <Image src={car.image1} alt="thumbnail2" fill />
+          <Image
+            src={car.image1}
+            alt="thumbnail2"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </figure>
         <figure
           className="relative h-[64px] w-full sm:h-[108px] rounded-lg overflow-hidden cursor-pointer"
           onClick={() => setMainImg(car.image2)}
         >
-          <Image src={car.image2} alt="thumbnail2" fill />
+          <Image
+            src={car.image2}
+            alt="thumbnail2"
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
         </figure>
       </div>
     </div>

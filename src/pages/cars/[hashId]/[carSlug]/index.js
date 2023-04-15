@@ -7,8 +7,6 @@ import getAllTypesService from "@/services/getAllTypeService";
 import CarInfo from "@/components/CarInfo";
 
 const CarDetailPage = ({ recentCar, car }) => {
-
-  console.log(car);
   return (
     <>
       <section className="container mx-auto max-w-[1440px] flex">
@@ -16,7 +14,6 @@ const CarDetailPage = ({ recentCar, car }) => {
           <section className="md:flex md:justify-between md:gap-x-8 mb-8">
             <ImageGallery car={car} />
             <CarInfo car={car} />
-
           </section>
 
           <section className="mb-8">
