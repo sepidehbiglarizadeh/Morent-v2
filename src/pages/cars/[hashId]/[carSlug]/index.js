@@ -4,6 +4,7 @@ import ImageGallery from "@/components/ImageGallery";
 import Card from "@/components/Card";
 import getOneCarService from "@/services/getOneCarService";
 import getAllTypesService from "@/services/getAllTypeService";
+import CarInfo from "@/components/CarInfo";
 
 const CarDetailPage = ({ recentCar, car }) => {
 
@@ -14,6 +15,8 @@ const CarDetailPage = ({ recentCar, car }) => {
         <div className="px-6 mt-8 w-full">
           <section className="md:flex md:justify-between md:gap-x-8 mb-8">
             <ImageGallery car={car} />
+            <CarInfo car={car} />
+
           </section>
 
           <section className="mb-8">
