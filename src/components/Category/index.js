@@ -42,8 +42,18 @@ const Category = ({ allCras, carTypes }) => {
     }
   };
 
+  const deleteFiltersHandler = () => {
+    router.push(router.pathname);
+  };
+
   return (
     <section className="bg-white md:w-56 xl:w-[300px] p-8 hidden md:block">
+      <button
+        className="text-primary-500 text-right w-full font-bold text-xs"
+        onClick={deleteFiltersHandler}
+      >
+        Remove All
+      </button>
       <h2 className="text-xs font-semibold mb-5 text-secondary-300 uppercase">
         Type
       </h2>
