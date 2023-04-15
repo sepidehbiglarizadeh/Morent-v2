@@ -5,6 +5,7 @@ import Card from "@/components/Card";
 import getOneCarService from "@/services/getOneCarService";
 import getAllTypesService from "@/services/getAllTypeService";
 import CarInfo from "@/components/CarInfo";
+import CommentsList from "@/components/CommentsList";
 
 const CarDetailPage = ({ recentCar, car }) => {
   return (
@@ -15,6 +16,7 @@ const CarDetailPage = ({ recentCar, car }) => {
             <ImageGallery car={car} />
             <CarInfo car={car} />
           </section>
+          <CommentsList car={car} />
 
           <section className="mb-8">
             <div className="flex justify-between items-center mb-5 md:mb-[26px]">
