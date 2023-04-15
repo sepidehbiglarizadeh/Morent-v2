@@ -1,3 +1,7 @@
+import routerPush from "@/utils/routerPush";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
 const capacity = [
   { id: 1, title: "2 Person", value: 2 },
   { id: 2, title: "4 Person", value: 4 },
@@ -6,6 +10,38 @@ const capacity = [
 ];
 
 const Category = ({ allCras, carTypes }) => {
+  const router = useRouter();
+  const [filters, setFilters] = useState({
+    typeId: [],
+    capacity: [],
+    price: 0,
+  });
+
+  useEffect(() => {
+    router.query.typeId = filters.typeId;
+    router.query.capacity = filters.capacity;
+    if (filters.price != 0) {
+      router.query.price = filters.price;
+    } else {
+      delete router.query.price; // Remove the "price" property from router.query
+    }
+    routerPush(router);
+  }, [filters]);
+
+  const changeHandler = (e) => {
+    const { name, value, checked } = e.target;
+    if (name !== "price" && checked) {
+      setFilters({ ...filters, [name]: [...filters[name], value] });
+    } else if (name !== "price" && !checked) {
+      setFilters({
+        ...filters,
+        [name]: filters[name].filter((item) => item !== value),
+      });
+    } else if (name === "price") {
+      setFilters({ ...filters, [name]: value });
+    }
+  };
+
   return (
     <section className="bg-white md:w-56 xl:w-[300px] p-8 hidden md:block">
       <h2 className="text-xs font-semibold mb-5 text-secondary-300 uppercase">
@@ -24,6 +60,7 @@ const Category = ({ allCras, carTypes }) => {
                 value={type._id}
                 name="typeId"
                 className="accent-primary-500 w-5 h-5 rounded"
+                onChange={changeHandler}
               />
               <label
                 htmlFor={type._id}
@@ -55,6 +92,7 @@ const Category = ({ allCras, carTypes }) => {
                 value={item.value}
                 name="capacity"
                 className="accent-primary-500 w-5 h-5 rounded"
+                onChange={changeHandler}
               />
               <label
                 htmlFor={item.id}
@@ -69,6 +107,22 @@ const Category = ({ allCras, carTypes }) => {
           );
         })}
       </ul>
+      <h2 className="text-xs font-semibold mb-5 text-secondary-300 uppercase">
+        Price
+      </h2>
+      <input
+        type="range"
+        className="w-full"
+        min="0"
+        max="100"
+        name="price"
+        value={filters.price}
+        onChange={changeHandler}
+        step={10}
+      />
+      <span className="text-xl font-semibold text-secondary-400">
+        Max ${filters.price}.00
+      </span>
     </section>
   );
 };
