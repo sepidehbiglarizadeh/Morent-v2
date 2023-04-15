@@ -6,12 +6,6 @@ import "react-time-picker/dist/TimePicker.css";
 import "react-clock/dist/Clock.css";
 import { ChevronDownIcon } from "@heroicons/react/24/solid";
 
-const options = [
-  { value: "berin", label: "Berin" },
-  { value: "munich", label: "Munich" },
-  { value: "frankfurt", label: "frankfurt" },
-];
-
 const times = [];
 for (let i = 0; i < 24; i++) {
   const hour = i.toString().padStart(2, "0");
@@ -22,7 +16,15 @@ for (let i = 0; i < 24; i++) {
   }
 }
 
-const FilterForm = ({ title, bgColor, date, handleDateChange }) => {
+const FilterForm = ({
+  title,
+  bgColor,
+  date,
+  handleDateChange,
+  cities,
+  location,
+  setLocation,
+}) => {
   return (
     <div className="bg-white p-4 md:py-6 md:px-12 rounded-[10px] flex-1">
       <div className="flex items-center gap-x-2 mb-6">
@@ -41,12 +43,16 @@ const FilterForm = ({ title, bgColor, date, handleDateChange }) => {
         <div className=" w-full">
           <label className="block font-bold ">Location</label>
           <div className="flex items-center">
-            <select className=" w-full text-xs border-none focus:ring-0 outline-none cursor-pointer text-secondary-300 font-medium">
+            <select
+              className="px-0 w-full text-xs border-none focus:ring-0 cursor-pointer text-secondary-300 font-medium"
+              value={location}
+              onChange={(e) => setLocation(e.target.value.toLowerCase())}
+            >
               <option value="" disabled>
                 Select your city
               </option>
-              {options.map((item) => (
-                <option key={item.value}>{item.label}</option>
+              {cities.map((city) => (
+                <option key={city._id}>{city.title}</option>
               ))}
             </select>
             {/* <ChevronDownIcon className="w-3 h-3" /> */}
@@ -62,7 +68,7 @@ const FilterForm = ({ title, bgColor, date, handleDateChange }) => {
               onChange={handleDateChange}
               dateFormat="d MMMM yyyy"
               placeholderText="Select your date"
-              className="w-full text-xs outline-none border-none appearance-none focus:ring-0 cursor-pointer text-secondary-300 font-medium"
+              className="px-0 w-full text-xs outline-none border-none appearance-none focus:ring-0 cursor-pointer text-secondary-300 font-medium"
             />
             <ChevronDownIcon className="w-3 h-3" />
           </div>
@@ -72,7 +78,7 @@ const FilterForm = ({ title, bgColor, date, handleDateChange }) => {
         <div className="pl-5 w-full">
           <label className="block font-bold ">Time</label>
           <div className="flex items-center">
-            <select className=" w-full text-xs border-none focus:ring-0 outline-none cursor-pointer text-secondary-300 font-medium">
+            <select className="px-0 w-full text-xs border-none focus:ring-0 cursor-pointer text-secondary-300 font-medium">
               <option value="" disabled>
                 Select your time
               </option>

@@ -3,7 +3,9 @@ import FilterForm from "./FilterForm";
 import Link from "next/link";
 import { useState } from "react";
 
-const Filter = () => {
+const Filter = ({ cities }) => {
+  const [pickuplocation, setPickupLocation] = useState("");
+  const [dropoffLocation, setDropoffLocation] = useState("");
   const [pickUptDate, setPickUpDate] = useState(new Date());
   const [dropOffDate, setDropOffDate] = useState(new Date());
 
@@ -23,9 +25,12 @@ const Filter = () => {
           bgColor="bg-primary-500"
           date={pickUptDate}
           handleDateChange={handlePickupDateChange}
+          location={pickuplocation}
+          setLocation={setPickupLocation}
+          cities={cities}
         />
         <Link
-          href="/cars"
+          href={`/cars?p=${pickuplocation}&d=${dropoffLocation}`} 
           className="self-center bg-primary-500 w-[60px] h-[60px] hover:bg-primary-600 rounded-[10px] flex items-center justify-center absolute top-[125px] lg:static "
         >
           <DoubleArrow />
@@ -35,6 +40,9 @@ const Filter = () => {
           bgColor="bg-information-500"
           date={dropOffDate}
           handleDateChange={handleDropoffDateChange}
+          location={dropoffLocation}
+          setLocation={setDropoffLocation}
+          cities={cities}
         />
       </div>
     </section>

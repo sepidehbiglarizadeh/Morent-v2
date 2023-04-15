@@ -3,12 +3,13 @@ import Category from "@/components/Category";
 import Filter from "@/components/Filter";
 import getAllCarsService from "@/services/getAllCarsService";
 import getAllTypesService from "@/services/getAllTypeService";
+import getCitiesService from "@/services/getCitiesService";
 import http from "@/services/httpService";
 import routerPush from "@/utils/routerPush";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
-const CarsPage = ({ carsData, carTypes, allCras }) => {
+const CarsPage = ({ carsData, carTypes, allCras ,cities}) => {
   const router = useRouter();
 
   const [limit, setLimit] = useState(carsData.limit);
@@ -29,7 +30,7 @@ const CarsPage = ({ carsData, carTypes, allCras }) => {
     <main className="container mx-auto max-w-[1440px] flex ">
       <Category allCras={allCras} carTypes={carTypes} />
       <div className="py-8 px-6 md:px-8 flex-1">
-        <Filter />
+        <Filter cities={cities} />
         <div className="grid grid-cols-6 gap-8 mb-12 md:mb-16 w-full">
           {carsData.docs.length ? (
             carsData.docs.map((car) => {
@@ -58,12 +59,14 @@ export async function getServerSideProps({ req, query }) {
   const { data: carsResult } = await getAllCarsService(req, query);
   const { data: typesResult } = await getAllTypesService();
   const { data: allCras } = await http.get("/cars?limit=9");
+  const { data: cities } = await getCitiesService();
 
   return {
     props: {
       carsData: carsResult.data,
       carTypes: typesResult.data,
       allCras: allCras.data.docs,
+      cities: cities.data,
     },
   };
 }

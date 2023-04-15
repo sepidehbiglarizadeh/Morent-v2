@@ -3,13 +3,14 @@ import Hero from "@/components/Hero";
 import Card from "@/components/Card";
 import Link from "next/link";
 import http from "@/services/httpService";
+import getCitiesService from "@/services/getCitiesService";
 
-export default function Home({ popularCars, recomendationCar }) {
+export default function Home({ popularCars, recomendationCar,cities }) {
   return (
     <main className="mt-8 ">
       <Hero />
       <div className="px-6 lg:px-16">
-        <Filter />
+        <Filter cities={cities} />
       </div>
 
       {/* popular cars section */}
@@ -71,10 +72,13 @@ export async function getServerSideProps({ req }) {
     }
   );
 
+  const { data: cities } = await getCitiesService();
+
   return {
     props: {
       popularCars: popularCars.data.docs,
       recomendationCar: recomendationCar.data.docs,
+      cities: cities.data,
     },
   };
 }
