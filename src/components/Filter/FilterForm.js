@@ -38,10 +38,10 @@ const FilterForm = ({ title, bgColor, date, handleDateChange }) => {
 
       <div className="flex items-center justify-between ">
         {/* location picker */}
-        <div className="pr-5 w-full">
-          <label className="block font-bold mb-2">Location</label>
+        <div className=" w-full">
+          <label className="block font-bold ">Location</label>
           <div className="flex items-center">
-            <select className=" w-full text-xs appearance-none outline-none cursor-pointer text-secondary-300 font-medium">
+            <select className=" w-full text-xs border-none focus:ring-0 outline-none cursor-pointer text-secondary-300 font-medium">
               <option value="" disabled>
                 Select your city
               </option>
@@ -49,20 +49,20 @@ const FilterForm = ({ title, bgColor, date, handleDateChange }) => {
                 <option key={item.value}>{item.label}</option>
               ))}
             </select>
-            <ChevronDownIcon className="w-3 h-3" />
+            {/* <ChevronDownIcon className="w-3 h-3" /> */}
           </div>
         </div>
 
         {/* Date picker */}
         <div className="px-5 w-full border-r border-l">
-          <label className="block font-bold mb-2">Date</label>
+          <label className="block font-bold ">Date</label>
           <div className="flex items-center">
             <DatePicker
               selected={date}
               onChange={handleDateChange}
               dateFormat="d MMMM yyyy"
               placeholderText="Select your date"
-              className="w-full text-xs outline-none cursor-pointer text-secondary-300 font-medium"
+              className="w-full text-xs outline-none border-none appearance-none focus:ring-0 cursor-pointer text-secondary-300 font-medium"
             />
             <ChevronDownIcon className="w-3 h-3" />
           </div>
@@ -70,17 +70,17 @@ const FilterForm = ({ title, bgColor, date, handleDateChange }) => {
 
         {/* Time picker */}
         <div className="pl-5 w-full">
-          <label className="block font-bold mb-2">Time</label>
+          <label className="block font-bold ">Time</label>
           <div className="flex items-center">
-            <select className=" w-full text-xs appearance-none outline-none cursor-pointer text-secondary-300 font-medium">
+            <select className=" w-full text-xs border-none focus:ring-0 outline-none cursor-pointer text-secondary-300 font-medium">
               <option value="" disabled>
                 Select your time
               </option>
-              {times.map((time,index) => (
+              {times.map((time, index) => (
                 <option key={index}>{time.value}</option>
               ))}
             </select>
-            <ChevronDownIcon className="w-3 h-3" />
+            {/* <ChevronDownIcon className="w-3 h-3" /> */}
           </div>
         </div>
       </div>

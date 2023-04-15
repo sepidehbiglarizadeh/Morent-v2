@@ -4,14 +4,16 @@ import Card from "@/components/Card";
 import Link from "next/link";
 import http from "@/services/httpService";
 
-export default function Home({ popularCars ,recomendationCar}) {
+export default function Home({ popularCars, recomendationCar }) {
   return (
-    <main>
+    <main className="mt-8 ">
       <Hero />
-      <Filter />
+      <div className="px-6 lg:px-16">
+        <Filter />
+      </div>
 
       {/* popular cars section */}
-      <section className="px-4 md:px-[60px]  mb-9 ">
+      <section className="px-4 md:px-[60px]  mb-9 container mx-auto max-w-[1440px] ">
         <div className="flex justify-between items-center mb-5 md:mb-[26px]">
           <h2 className="text-secondary-300 font-semibold text-sm md:text-base">
             Popular Car
@@ -31,7 +33,7 @@ export default function Home({ popularCars ,recomendationCar}) {
       </section>
 
       {/* recomendationCar section */}
-      <section className="px-4 md:px-[60px]  mb-9">
+      <section className="px-4 md:px-[60px]  mb-9 container mx-auto max-w-[1440px]">
         <div className="flex justify-between items-center mb-5 md:mb-[26px]">
           <h2 className="text-secondary-300 font-semibold text-sm md:text-base">
             Recomendation Car

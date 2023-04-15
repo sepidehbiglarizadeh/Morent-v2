@@ -26,11 +26,11 @@ const CarsPage = ({ carsData, carTypes, allCras }) => {
   };
 
   return (
-    <main className="container mx-auto max-w-[1440px] flex gap-x-8">
+    <main className="container mx-auto max-w-[1440px] flex ">
       <Category allCras={allCras} carTypes={carTypes} />
-      <div>
+      <div className="py-8 px-6 md:px-8 flex-1">
         <Filter />
-        <div className="grid grid-cols-6 gap-8 mb-12 md:mb-16">
+        <div className="grid grid-cols-6 gap-8 mb-12 md:mb-16 w-full">
           {carsData.docs.length ? (
             carsData.docs.map((car) => {
               return <Card key={car._id} car={car} gridLayout={true} />;
@@ -39,7 +39,7 @@ const CarsPage = ({ carsData, carTypes, allCras }) => {
             <p className="col-span-6 text-center font-bold">No Car Found !!</p>
           )}
         </div>
-        <div className="col-span-6 flex justify-center mb-12 md:mb-16">
+        <div className="col-span-6 flex justify-center mb-12">
           <button
             className={`bg-primary-500 w-[223px] h-9 xl:w-[156px] xl:h-11 capitalize hover:bg-primary-600 text-xs xl:text-base font-semibold rounded text-white`}
             onClick={clickHandler}

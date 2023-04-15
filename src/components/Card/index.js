@@ -9,9 +9,9 @@ const Card = ({ car, gridLayout, gridCols }) => {
   return (
     <div
       className={` bg-white p-6 rounded-lg flex flex-col justify-between md:min-h-[388px] ${
-        gridLayout ? `col-span-6 sm:col-span-3 md:col-span-2` : "min-w-[240px]"
+        gridLayout ? `col-span-6 md:col-span-3 lg:col-span-2` : "min-w-[200px]"
       } ${
-        gridCols ? "col-span-8 sm:col-span-4 xl:col-span-2" : "min-w-[240px]"
+        gridCols ? "col-span-8 sm:col-span-4 xl:col-span-2" : "min-w-[150px]"
       }`}
     >
       {/* card Header */}

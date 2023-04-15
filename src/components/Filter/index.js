@@ -16,7 +16,7 @@ const Filter = () => {
   }
 
   return (
-    <section className="px-6 lg:px-16 ">
+    <section className=" ">
       <div className="mb-8 md:mb-9 flex flex-col gap-y-8 lg:flex-row lg:justify-between lg:gap-x-11 lg:gap-y-0 relative container mx-auto max-w-[1440px]">
         <FilterForm
           title="Pick-Up"

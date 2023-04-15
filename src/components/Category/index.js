@@ -7,7 +7,7 @@ const capacity = [
 
 const Category = ({ allCras, carTypes }) => {
   return (
-    <section className="bg-white w-[360px] p-8 hidden md:block">
+    <section className="bg-white md:w-56 xl:w-[300px] p-8 hidden md:block">
       <h2 className="text-xs font-semibold mb-5 text-secondary-300 uppercase">
         Type
       </h2>
