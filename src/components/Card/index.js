@@ -28,8 +28,9 @@ const Card = ({ car }) => {
             blurDataURL={car.coverImage}
             width={272}
             height={84}
+            alt={car.title}
           />
-          <div class="absolute bottom-0 left-0 right-0 h-7 bg-gradient-to-t from-white to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-7 bg-gradient-to-t from-white to-transparent"></div>
         </figure>
 
         <div className="flex flex-col gap-y-4 md:flex-row md:items-center md:justify-between">
