@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 
 export const userAsyncSignin = createAsyncThunk(
-  "auth/userAsyncSignin",
+  "userSignin/userAsyncSignin",
   async (payload, { rejectWithValue }) => {
     try {
       const response = await http.post("/user/signin", payload);
@@ -24,8 +24,8 @@ const initialState = {
   error: null,
 };
 
-const authSlice = createSlice({
-  name: "auth",
+const userSigninSlice = createSlice({
+  name: "userSignin",
   initialState,
   extraReducers: (builder) => {
     builder
@@ -52,4 +52,4 @@ const authSlice = createSlice({
   },
 });
 
-export default authSlice.reducer;
+export default userSigninSlice.reducer;

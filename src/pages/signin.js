@@ -7,7 +7,7 @@ import InputComponent from "@/common/InputComponent";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { userAsyncSignin } from "@/features/auth/authSlice";
+import { userAsyncSignin } from "@/features/userSignin/userSigninSlice";
 
 const initialValues = {
   email: "",
@@ -23,7 +23,7 @@ const validationSchema = Yup.object({
 
 const SigninForm = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.userSignin);
   const router = useRouter();
 
   const onSubmit = (values) => {
