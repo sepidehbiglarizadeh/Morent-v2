@@ -10,7 +10,7 @@ import {
 import AccountMenu from "./AccountMenu";
 import { useEffect, useRef, useState } from "react";
 
-const Header = () => {
+const Header = ({http}) => {
   const [anchorEl, setAnchorEl] = useState(false);
   const accountMenuRef = useRef();
 
@@ -67,6 +67,7 @@ const Header = () => {
             <AccountMenu
               anchorEl={anchorEl}
               accountMenuHandler={accountMenuHandler}
+              http={http}
             />
           </div>
           <Link href="/dashboard" className="p-[10px] border rounded-full">

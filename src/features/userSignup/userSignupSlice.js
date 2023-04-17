@@ -8,7 +8,6 @@ export const userAsyncSignup = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const response = await http.post("/user/signup", payload);
-      Router.push("/");
       return response.data;
     } catch (error) {
       const errorMessage =

@@ -28,7 +28,6 @@ const SigninForm = () => {
 
   const onSubmit = (values) => {
     dispatch(userAsyncSignin(values));
-    router.push("/");
   };
 
   const formik = useFormik({

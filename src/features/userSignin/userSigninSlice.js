@@ -8,7 +8,6 @@ export const userAsyncSignin = createAsyncThunk(
   async (payload, { rejectWithValue }) => {
     try {
       const response = await http.post("/user/signin", payload);
-      Router.push("/");
       return response.data;
     } catch (error) {
       const errorMessage =
