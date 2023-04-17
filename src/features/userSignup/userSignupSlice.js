@@ -3,11 +3,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { Router } from "next/router";
 
-export const userAsyncSignin = createAsyncThunk(
-  "userSignin/userAsyncSignin",
+export const userAsyncSignup = createAsyncThunk(
+  "userSignup/userAsyncSignup",
   async (payload, { rejectWithValue }) => {
     try {
-      const response = await http.post("/user/signin", payload);
+      const response = await http.post("/user/signup", payload);
       Router.push("/");
       return response.data;
     } catch (error) {
@@ -26,8 +26,8 @@ const initialState = {
   error: null,
 };
 
-const userSigninSlice = createSlice({
-  name: "userSignin",
+const userSignupSlice = createSlice({
+  name: "userSignup",
   initialState,
   extraReducers: (builder) => {
     builder
@@ -37,13 +37,13 @@ const userSigninSlice = createSlice({
           ...action.payload,
         };
       })
-      .addCase(userAsyncSignin.fulfilled, (state, action) => {
+      .addCase(userAsyncSignup.fulfilled, (state, action) => {
         return { ...state, loading: false, user: action.payload, error: null };
       })
-      .addCase(userAsyncSignin.pending, (state, action) => {
+      .addCase(userAsyncSignup.pending, (state, action) => {
         return { ...state, loading: true, user: {}, error: null };
       })
-      .addCase(userAsyncSignin.rejected, (state, action) => {
+      .addCase(userAsyncSignup.rejected, (state, action) => {
         return {
           ...state,
           loading: false,
@@ -54,4 +54,4 @@ const userSigninSlice = createSlice({
   },
 });
 
-export default userSigninSlice.reducer;
+export default userSignupSlice.reducer;
