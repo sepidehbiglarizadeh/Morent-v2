@@ -9,10 +9,12 @@ import {
 } from "@heroicons/react/24/solid";
 import AccountMenu from "./AccountMenu";
 import { useEffect, useRef, useState } from "react";
+import { useSelector } from "react-redux";
 
-const Header = ({http}) => {
+const Header = ({ http }) => {
   const [anchorEl, setAnchorEl] = useState(false);
   const accountMenuRef = useRef();
+  const { user } = useSelector((state) => state.userSignin);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -49,7 +51,7 @@ const Header = ({http}) => {
         </div>
         <div className="flex items-center gap-x-5">
           <Link
-            href="/favourites"
+            href={user ? "/favourites" : "/signin"}
             className="p-[10px] border rounded-full hidden md:block"
           >
             <HeartIcon className="w-6 h-6 fill-secondary-400" />
