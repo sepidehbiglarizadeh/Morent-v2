@@ -5,13 +5,11 @@ import {
   UserPlusIcon,
 } from "@heroicons/react/24/outline";
 import Link from "next/link";
-import { useDispatch, useSelector } from "react-redux";
-// import { userAsyncSignout } from "@/features/userSignin/userSigninSlice";
-// import axios from "axios";
-// import http from "@/services/httpService";
+import { useSelector } from "react-redux";
 
 const AccountMenu = ({ anchorEl, accountMenuHandler, http }) => {
   const { user } = useSelector((state) => state.userSignin);
+  
   const logoutUserHandler = () => {
     http
       .get("/user/logout")
@@ -20,6 +18,7 @@ const AccountMenu = ({ anchorEl, accountMenuHandler, http }) => {
       })
       .catch();
   };
+
   return (
     <div
       className={`${
