@@ -19,6 +19,15 @@ export const userAsyncSignin = createAsyncThunk(
   }
 );
 
+export const loadUserData = (store) => {
+  http
+    .get("/user/load")
+    .then(({ data }) => {
+      store.dispatch(signinUserSuccess(data));
+    })
+    .catch((err) => {});
+};
+
 const initialState = {
   loading: false,
   user: {},
@@ -28,6 +37,13 @@ const initialState = {
 const userSigninSlice = createSlice({
   name: "userSignin",
   initialState,
+  reducers: {
+    signinUserSuccess: (state, action) => {
+      state.loading = false;
+      state.user = action.payload;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(HYDRATE, (state, action) => {
@@ -53,4 +69,5 @@ const userSigninSlice = createSlice({
   },
 });
 
+export const { signinUserSuccess } = userSigninSlice.actions;
 export default userSigninSlice.reducer;

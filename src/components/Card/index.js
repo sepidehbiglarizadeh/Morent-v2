@@ -1,9 +1,9 @@
 import DoubleUser from "@/common/icons/DoubleUser";
 import GasStation from "@/common/icons/GasStation";
 import PointIcon from "@/common/icons/PointIcon";
-import { HeartIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import CardInteraactions from "./CardInteractions";
 
 const Card = ({ car, gridLayout, gridCols }) => {
   return (
@@ -17,9 +17,7 @@ const Card = ({ car, gridLayout, gridCols }) => {
       {/* card Header */}
       <div className="flex justify-between items-center mb-1">
         <h2 className="font-semibold">{car.title}</h2>
-        <button>
-          <HeartIcon className="w-4 h-4 stroke-secondary-300" />
-        </button>
+        <CardInteraactions car={car} />
       </div>
       <span className="block text-xs font-medium text-secondary-300 mb-3 md:mb-[52px]">
         {car.cType.title}
