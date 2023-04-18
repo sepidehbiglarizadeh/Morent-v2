@@ -15,6 +15,9 @@ const Header = ({ http }) => {
   const [anchorEl, setAnchorEl] = useState(false);
   const accountMenuRef = useRef();
   const { user } = useSelector((state) => state.userSignin);
+  const [searchValue, setSearchValue] = useState("");
+  const [allCars, setAllCars] = useState([]);
+  const [cars, setCars] = useState([]);
 
   useEffect(() => {
     const handleOutsideClick = (event) => {
@@ -33,6 +36,33 @@ const Header = ({ http }) => {
     };
   }, []);
 
+  useEffect(() => {
+    const getAllCars = async () => {
+      try {
+        const { data: carsData } = await http.get("/cars?limit=100");
+        setAllCars(carsData.data.docs);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getAllCars();
+  }, []);
+
+  const changeHandler = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  useEffect(() => {
+    if (searchValue) {
+      const filteredCars = allCars.filter((car) =>
+        car.title.toLowerCase().includes(searchValue.toLowerCase())
+      );
+      setCars(filteredCars);
+    } else {
+      setCars([]);
+    }
+  }, [searchValue]);
+
   const accountMenuHandler = () => {
     setAnchorEl((prevState) => !prevState);
   };
@@ -47,7 +77,12 @@ const Header = ({ http }) => {
           >
             Morent
           </Link>
-          <DesktopSearch />
+          <DesktopSearch
+            changeHandler={changeHandler}
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+            cars={cars}
+          />
         </div>
         <div className="flex items-center gap-x-5">
           <Link
@@ -77,7 +112,12 @@ const Header = ({ http }) => {
           </Link>
         </div>
       </div>
-      <MobileSearch />
+      <MobileSearch
+        changeHandler={changeHandler}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        cars={cars}
+      />
     </header>
   );
 };
