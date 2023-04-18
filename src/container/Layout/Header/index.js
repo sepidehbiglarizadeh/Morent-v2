@@ -86,7 +86,7 @@ const Header = ({ http }) => {
         </div>
         <div className="flex items-center gap-x-5">
           <Link
-            href={user ? "/favourites" : "/signin"}
+            href={user._id ? "/favourites" : "/signin"}
             className="p-[10px] border rounded-full hidden md:block"
           >
             <HeartIcon className="w-6 h-6 fill-secondary-400" />
@@ -107,7 +107,7 @@ const Header = ({ http }) => {
               http={http}
             />
           </div>
-          <Link href="/dashboard" className="p-[10px] border rounded-full">
+          <Link href={`${user._id ? "/dashboard" : "/signin"}`} className="p-[10px] border rounded-full">
             <UserIcon className="w-6 h-6 fill-secondary-400" />
           </Link>
         </div>
