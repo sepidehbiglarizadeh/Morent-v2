@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import likeCarService from "@/services/likeCarService";
 import { HeartIcon } from "@heroicons/react/24/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/24/solid";
-
+import { toast } from "react-hot-toast";
 
 const CardInteraactions = ({ car }) => {
   const router = useRouter();
@@ -12,7 +12,9 @@ const CardInteraactions = ({ car }) => {
     try {
       const { data } = await likeCarService(carId);
       routerPush(router);
+      toast.success(data.message);
     } catch (err) {
+      toast.error(err?.response?.data?.message);
     }
   };
 

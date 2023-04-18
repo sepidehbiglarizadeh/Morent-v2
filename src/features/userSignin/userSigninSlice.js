@@ -2,18 +2,21 @@ import http from "@/services/httpService";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { Router } from "next/router";
+import { toast } from "react-hot-toast";
 
 export const userAsyncSignin = createAsyncThunk(
   "userSignin/userAsyncSignin",
   async (payload, { rejectWithValue }) => {
     try {
       const response = await http.post("/user/signin", payload);
+      toast.success("Logged in Successfully !");
       return response.data;
     } catch (error) {
       const errorMessage =
         error.response && error.response.data.message
           ? error.response.data.message
           : error.message;
+      toast.error(errorMessage);
       return rejectWithValue(errorMessage);
     }
   }

@@ -1,13 +1,10 @@
 import Layout from "@/container/Layout";
 import { wrapper } from "@/features/store";
-import { Provider, useStore } from "react-redux";
+import { Provider } from "react-redux";
 import "@/styles/globals.css";
 import { useEffect } from "react";
-import {
-  loadUserData,
-  userAsyncSignin,
-} from "@/features/userSignin/userSigninSlice";
-import http from "@/services/httpService";
+import { loadUserData } from "@/features/userSignin/userSigninSlice";
+import { Toaster } from "react-hot-toast";
 
 export default function App({ Component, ...rest }) {
   const { store, props } = wrapper.useWrappedStore(rest);
@@ -21,6 +18,7 @@ export default function App({ Component, ...rest }) {
     <Provider store={store}>
       <Layout>
         <Component {...pageProps} />
+        <Toaster />
       </Layout>
     </Provider>
   );
