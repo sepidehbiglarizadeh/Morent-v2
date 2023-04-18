@@ -49,8 +49,6 @@ const Card = ({ car, gridLayout, gridCols }) => {
             gridLayout
               ? "flex flex-col gap-y-4"
               : "flex justify-between items-center"
-          } ${
-            gridCols ? "flex flex-col gap-y4" : ""
           } md:flex-row justify-between md:items-center md:gap-x-1 md:mb-9 md:w-full`}
         >
           <div className="flex items-center gap-x-1">
