@@ -10,7 +10,7 @@ const PaymentPage = ({ car }) => {
   return (
     <>
       <Head>
-        <title>MORENT | Favourites</title>
+        <title>MORENT | Payment</title>
       </Head>
       <div className="px-4 md:px-6 py-8 md:flex md:items-start gap-x-8 container mx-auto max-w-[1440px]">
         <RentalSummary car={car} />

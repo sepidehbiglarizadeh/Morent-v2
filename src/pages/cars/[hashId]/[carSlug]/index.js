@@ -6,10 +6,14 @@ import getOneCarService from "@/services/getOneCarService";
 import getAllTypesService from "@/services/getAllTypeService";
 import CarInfo from "@/components/CarInfo";
 import CommentsList from "@/components/CommentsList";
+import Head from "next/head";
 
 const CarDetailPage = ({ recentCar, car }) => {
   return (
     <>
+      <Head>
+        <title>MORENT | {car.title}</title>
+      </Head>
       <section className="container mx-auto max-w-[1440px] flex">
         <div className="px-6 mt-8 w-full">
           <section className="md:flex md:justify-between md:gap-x-8 mb-8">
