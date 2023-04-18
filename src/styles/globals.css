@@ -29,7 +29,7 @@ body {
 }
 
 .background{
-  background-image: url("./../../public/images/Ads.png");
+  background-image: url("/images/Ads.png");
   background-repeat: no-repeat;
   background-size: cover;
 }

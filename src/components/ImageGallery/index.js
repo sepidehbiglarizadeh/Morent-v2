@@ -13,7 +13,7 @@ const ImageGallery = ({ car }) => {
   return (
     <div className="mb-8 md:mb-0 md:w-1/2">
       <div
-        className={`w-full min-h-[232px] md:h-[360px] rounded-[10px] p-4 mb-6 relative overflow-hidden ${
+        className={` w-full min-h-[232px] md:h-[360px] rounded-[10px] p-4 mb-6 relative overflow-hidden ${
           mainImg === car.coverImage
             ? "background flex flex-col justify-between"
             : "bg-red-100"

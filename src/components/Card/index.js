@@ -31,18 +31,20 @@ const Card = ({ car, gridLayout, gridCols }) => {
             : "flex flex-col"
         }  md:flex-col md:justify-start md:items-start md:gap-x-0 mb-9 md:mb-0 gap-y-[52px]`}
       >
-        <figure className="px-4 md:px-0 flex items-end justify-center relative w-full ">
-          <Image
-            src={car.coverImage}
-            sizes="(max-width: 768px) 100vw, 50vw "
-            blurDataURL={car.coverImage}
-            width={272}
-            height={84}
-            alt={car.title}
-            className="object-contain"
-          />
-          <div className="absolute bottom-0 left-0 right-0 h-7 bg-gradient-to-t from-white to-transparent"></div>
-        </figure>
+        <Link href={`/cars/${car.hashId}/${car.slug}`}>
+          <figure className="px-4 md:px-0 flex items-end justify-center relative w-full ">
+            <Image
+              src={car.coverImage}
+              sizes="(max-width: 768px) 100vw, 50vw "
+              blurDataURL={car.coverImage}
+              width={272}
+              height={84}
+              alt={car.title}
+              className="object-contain"
+            />
+            <div className="absolute bottom-0 left-0 right-0 h-7 bg-gradient-to-t from-white to-transparent"></div>
+          </figure>
+        </Link>
 
         <div
           className={`${
